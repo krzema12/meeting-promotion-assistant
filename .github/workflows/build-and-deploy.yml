@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out and create a bundle
-      - uses: action/checkout@v2
-      - run: ./gradlew browserDistribution
+        uses: action/checkout@v2
+        run: ./gradlew browserDistribution
