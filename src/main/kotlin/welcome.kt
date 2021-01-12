@@ -59,24 +59,17 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
                 Presentation.WithKnownSpeaker(
                     speaker= Speaker(
                         name = "Carlos Ballesteros Velasco",
-                        photoUrl = "https://avatars3.githubusercontent.com/u/570848?s=460&u=8cf91bc9346691447a6e1688b7b032ccae451dbb&v=4",
+                        photoUrl = "Carlos.jpg",
                     ),
                     topic = "Story, mistakes and evolution of Korlibs",
                 ),
-//                Presentation(
-//                    speaker= Speaker(
-//                        name = "Piotr Krzemiński",
-//                        photoUrl = "https://media-exp1.licdn.com/dms/image/C4E03AQEaILnH1-qVFw/profile-displayphoto-shrink_200_200/0/1600458498952?e=1616025600&v=beta&t=4WLtwlG8fUcXctjl_QRrLWUZHoSXPz-e0qIrEhX7nY0",
-//                    ),
-//                    topic = "kotlin-rpc - Kotlin-centric RPC framework",
-//                ),
                 Presentation.FreeSlot,
             ),
         )
     }
 
     override fun RBuilder.render() {
-        h1 { +"Facebook event cover" }
+        h1 { +"Facebook event cover (1920x1005)" }
         styledDiv {
             css {
                 // https://louisem.com/5992/facebook-event-image-size
