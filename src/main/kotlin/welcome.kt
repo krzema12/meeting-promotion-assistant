@@ -134,5 +134,77 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
                 }
             }
         }
+        h1 { +"YouTube thumbnails (1280x720)" }
+        youTubeThumbnail(state.presentations)
+        state.presentations.forEach { presentation ->
+            youTubeThumbnail(state.presentations.filterNot { it == presentation })
+        }
+    }
+
+    private fun RBuilder.youTubeThumbnail(presentations: List<Presentation>) {
+        styledDiv {
+            css {
+                // https://support.google.com/youtube/answer/72431?hl=en#zippy=%2Cimage-size-resolution
+                width = 1280.px
+                height = 720.px
+                display = Display.flex
+                backgroundImage = Image("url('Kotlin_UG_pattern.png')")
+                backgroundPosition = "center center"
+                backgroundSize = "cover"
+            }
+            presentations.forEach { presentation ->
+                styledDiv {
+                    css {
+                        color = Color.white
+                        fontSize = 40.px
+                        fontFamily = "sans-serif"
+                        display = Display.flex
+                        flexDirection = FlexDirection.column
+                        flexGrow = 1.0
+                        width = 50.pc
+                        textAlign = TextAlign.center
+                    }
+                    styledDiv {
+                        css {
+                            width = 450.px
+                            minHeight = 450.px
+                            height = 450.px
+                            maxHeight = 450.px
+                            borderRadius = 225.px
+                            backgroundImage = when (presentation) {
+                                is Presentation.WithKnownSpeaker ->
+                                    Image("url('${presentation.speaker.photoUrl}')")
+                                is Presentation.FreeSlot ->
+                                    Image("url('https://www.nufcblog.com/wp-content/uploads/2015/01/mystery-man-225x300.png')")
+                            }
+                            backgroundPosition = "center center"
+                            backgroundSize = "cover"
+                            margin = "0 auto"
+                            marginTop = 50.px
+                            marginBottom = 30.px
+                        }
+                    }
+                    styledDiv {
+                        css {
+                            fontWeight = FontWeight.bold
+                        }
+                        when (presentation) {
+                            is Presentation.WithKnownSpeaker -> +presentation.speaker.name
+                            is Presentation.FreeSlot -> +"Free slot!"
+                        }
+                    }
+                    styledDiv {
+                        if (presentation is Presentation.WithKnownSpeaker) {
+                            +"\"${presentation.topic}\""
+                        }
+                    }
+                }
+            }
+        }
+        styledDiv {
+            css {
+                height = 50.px
+            }
+        }
     }
 }
