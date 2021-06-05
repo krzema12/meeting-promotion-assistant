@@ -63,7 +63,13 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
                     ),
                     topic = "Pragmatic web development with KVision and Kotlin/JS",
                 ),
-                Presentation.FreeSlot,
+                Presentation.WithKnownSpeaker(
+                    speaker= Speaker(
+                        name = "Piotr Krzemiński",
+                        photoUrl = "Piotr.jpg",
+                    ),
+                    topic = "'fun Kotlin.fact()', a new blog with Kotlin trivia"
+                ),
             ),
         )
     }
