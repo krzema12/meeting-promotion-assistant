@@ -3,7 +3,9 @@ import kotlinx.css.Display
 import kotlinx.css.FlexDirection
 import kotlinx.css.FontWeight
 import kotlinx.css.Image
+import kotlinx.css.Position
 import kotlinx.css.TextAlign
+import kotlinx.css.backgroundColor
 import kotlinx.css.backgroundImage
 import kotlinx.css.backgroundPosition
 import kotlinx.css.backgroundSize
@@ -16,14 +18,18 @@ import kotlinx.css.fontFamily
 import kotlinx.css.fontSize
 import kotlinx.css.fontWeight
 import kotlinx.css.height
+import kotlinx.css.left
 import kotlinx.css.margin
 import kotlinx.css.marginBottom
 import kotlinx.css.marginTop
 import kotlinx.css.maxHeight
 import kotlinx.css.minHeight
 import kotlinx.css.pc
+import kotlinx.css.position
 import kotlinx.css.px
+import kotlinx.css.right
 import kotlinx.css.textAlign
+import kotlinx.css.top
 import kotlinx.css.width
 import react.RBuilder
 import react.RComponent
@@ -48,7 +54,6 @@ sealed class Presentation {
 
     object FreeSlot : Presentation()
 }
-
 
 @JsExport
 class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
@@ -75,12 +80,126 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
     }
 
     override fun RBuilder.render() {
+        meetupPhoto()
+
         facebookCoverPhoto()
 
         h1 { +"YouTube thumbnails (1280x720)" }
         youTubeThumbnail(state.presentations)
         state.presentations.forEach { presentation ->
             youTubeThumbnail(state.presentations.filterNot { it == presentation })
+        }
+    }
+
+    private fun RBuilder.meetupPhoto() {
+        h1 { +"Meetup photo (1200x675)" }
+        styledDiv {
+            css {
+                width = 1200.px
+                height = 675.px
+                position = Position.relative
+                backgroundImage = Image("url('Kotlin_UG_pattern.png')")
+                backgroundPosition = "center center"
+                color = Color.white
+                fontFamily = "sans-serif"
+            }
+            styledDiv {
+                css {
+                    position = Position.absolute
+                    width = 70.px
+                    height = 70.px
+                    right = 0.px
+                    top = 0.px
+                    backgroundImage = Image("url('Kotlin_UG_avatar.svg')")
+                }
+            }
+            styledDiv {
+                css {
+                    position = Position.absolute
+                    width = 70.px
+                    height = 70.px
+                    left = 0.px
+                    top = 0.px
+                    backgroundImage = Image("url('Dynatrace_Logo.svg')")
+                    backgroundColor = Color.white
+                    backgroundSize = "cover"
+                }
+            }
+            styledDiv {
+                css {
+                    display = Display.flex
+                }
+                state.presentations.forEach { presentation ->
+                    styledDiv {
+                        css {
+                            fontSize = 40.px
+                            display = Display.flex
+                            flexDirection = FlexDirection.column
+                            flexGrow = 1.0
+                            width = 50.pc
+                            textAlign = TextAlign.center
+                        }
+                        styledDiv {
+                            css {
+                                width = 300.px
+                                minHeight = 300.px
+                                height = 300.px
+                                maxHeight = 300.px
+                                borderRadius = 150.px
+                                backgroundImage = when (presentation) {
+                                    is Presentation.WithKnownSpeaker ->
+                                        Image("url('${presentation.speaker.photoUrl}')")
+                                    is Presentation.FreeSlot ->
+                                        Image("url('https://www.nufcblog.com/wp-content/uploads/2015/01/mystery-man-225x300.png')")
+                                }
+                                backgroundPosition = "center center"
+                                backgroundSize = "cover"
+                                margin = "0 auto"
+                                marginTop = 50.px
+                                marginBottom = 30.px
+                            }
+                        }
+                        styledDiv {
+                            css {
+                                fontWeight = FontWeight.bold
+                            }
+                            when (presentation) {
+                                is Presentation.WithKnownSpeaker -> +presentation.speaker.name
+                                is Presentation.FreeSlot -> +"Free slot!"
+                            }
+                        }
+                        styledDiv {
+                            if (presentation is Presentation.WithKnownSpeaker) {
+                                +"\"${presentation.topic}\""
+                            }
+                        }
+                    }
+                }
+            }
+            styledDiv {
+                css {
+                    fontSize = 25.px
+                    textAlign = TextAlign.center
+                }
+                styledDiv {
+                    css {
+                        fontWeight = FontWeight.bold
+                    }
+                    +"Where"
+                }
+                styledDiv {
+                    +"Dynatrace Office, al. Grunwaldzka 411, Gdańsk"
+                }
+                styledDiv {
+                    css {
+                        fontWeight = FontWeight.bold
+                    }
+                    +"When"
+                }
+                styledDiv {
+                    +"September 16th, 17:30"
+                }
+            }
         }
     }
 
