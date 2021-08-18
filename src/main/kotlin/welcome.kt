@@ -57,18 +57,18 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
         state = CoverPhotosState(
             presentations = listOf(
                 Presentation.WithKnownSpeaker(
-                    speaker= Speaker(
-                        name = "Robert Jaros",
-                        photoUrl = "RobertJaros.jpg",
-                    ),
-                    topic = "Pragmatic web development with KVision and Kotlin/JS",
-                ),
-                Presentation.WithKnownSpeaker(
-                    speaker= Speaker(
+                    speaker = Speaker(
                         name = "Piotr Krzemiński",
                         photoUrl = "Piotr.jpg",
                     ),
-                    topic = "'fun Kotlin.fact()', a new blog with Kotlin trivia"
+                    topic = "10 surprises when coming from Java"
+                ),
+                Presentation.WithKnownSpeaker(
+                    speaker = Speaker(
+                        name = "Grzegorz Witczak",
+                        photoUrl = "GrzegorzWitczak.jpg",
+                    ),
+                    topic = "Kotlin Coroutines basics for Java developers",
                 ),
             ),
         )
