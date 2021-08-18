@@ -75,6 +75,16 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
     }
 
     override fun RBuilder.render() {
+        facebookCoverPhoto()
+
+        h1 { +"YouTube thumbnails (1280x720)" }
+        youTubeThumbnail(state.presentations)
+        state.presentations.forEach { presentation ->
+            youTubeThumbnail(state.presentations.filterNot { it == presentation })
+        }
+    }
+
+    private fun RBuilder.facebookCoverPhoto() {
         h1 { +"Facebook event cover (1920x1005)" }
         styledDiv {
             css {
@@ -133,11 +143,6 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
                     }
                 }
             }
-        }
-        h1 { +"YouTube thumbnails (1280x720)" }
-        youTubeThumbnail(state.presentations)
-        state.presentations.forEach { presentation ->
-            youTubeThumbnail(state.presentations.filterNot { it == presentation })
         }
     }
 
