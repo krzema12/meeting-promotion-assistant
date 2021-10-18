@@ -63,17 +63,17 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
             presentations = listOf(
                 Presentation.WithKnownSpeaker(
                     speaker = Speaker(
-                        name = "Piotr Krzemiński",
+                        name = "Andrzej Zabost",
                         photoUrl = "Piotr.jpg",
                     ),
-                    topic = "10 surprises when coming from Java"
+                    topic = "Forward compatible enums serialization in Kotlin"
                 ),
                 Presentation.WithKnownSpeaker(
                     speaker = Speaker(
-                        name = "Grzegorz Witczak",
-                        photoUrl = "GrzegorzWitczak.jpg",
+                        name = "Piotr Prus",
+                        photoUrl = "PiotrPrus.jpg",
                     ),
-                    topic = "Kotlin Coroutines basics for Java developers",
+                    topic = "Meet Kotlin Multiplatform Mobile (KMM)",
                 ),
             ),
         )
@@ -197,7 +197,7 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
                     +"When"
                 }
                 styledDiv {
-                    +"September 16th, 17:30"
+                    +"December 2nd, 17:30"
                 }
             }
         }
