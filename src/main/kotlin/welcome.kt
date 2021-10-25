@@ -64,7 +64,7 @@ class CoverPhotos(props: RProps) : RComponent<RProps, CoverPhotosState>(props) {
                 Presentation.WithKnownSpeaker(
                     speaker = Speaker(
                         name = "Andrzej Zabost",
-                        photoUrl = "Piotr.jpg",
+                        photoUrl = "AndrzejZabost.jpg",
                     ),
                     topic = "Forward compatible enums serialization in Kotlin"
                 ),
