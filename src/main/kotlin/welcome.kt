@@ -44,17 +44,17 @@ val CoverPhotos = FC<Props>("CoverPhotos") {
             presentations = listOf(
                 Presentation.WithKnownSpeaker(
                     speaker = Speaker(
-                        name = "Andrzej Zabost",
-                        photoUrl = "AndrzejZabost.jpg",
+                        name = "Piotr Mionskowski",
+                        photoUrl = "PiotrMionskowski.jpeg",
                     ),
-                    topic = "Forward compatible enums serialization in Kotlin"
+                    topic = "KSP for lazy devs"
                 ),
                 Presentation.WithKnownSpeaker(
                     speaker = Speaker(
-                        name = "Piotr Prus",
-                        photoUrl = "PiotrPrus.jpg",
+                        name = "Piotr Krzemiński",
+                        photoUrl = "Piotr.jpg",
                     ),
-                    topic = "Meet Kotlin Multiplatform Mobile (KMM)",
+                    topic = "Non-functional aspects of Kotlin",
                 ),
             ),
         )
@@ -177,7 +177,7 @@ fun ChildrenBuilder.meetupPhoto(state: CoverPhotosState) {
                 +"When"
             }
             div {
-                +"December 2nd, 17:30"
+                +"March 3rd, 17:30"
             }
         }
     }
