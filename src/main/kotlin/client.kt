@@ -1,11 +1,10 @@
-import react.dom.render
 import kotlinx.browser.document
-import kotlinx.browser.window
+import react.create
+import react.dom.render
 
 fun main() {
-    window.onload = {
-        render(document.getElementById("root")) {
-            child(CoverPhotos::class) {}
-        }
-    }
+    println("Hello!")
+    val root = document.getElementById("root") ?: return
+    println(root)
+    render(CoverPhotos.create(), root)
 }
