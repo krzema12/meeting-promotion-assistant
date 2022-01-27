@@ -168,7 +168,7 @@ fun ChildrenBuilder.meetupPhoto(state: CoverPhotosState) {
                 +"Where"
             }
             div {
-                +"Dynatrace Office, al. Grunwaldzka 411, Gdańsk"
+                +"TBA (in-person or online)"
             }
             div {
                 css {
