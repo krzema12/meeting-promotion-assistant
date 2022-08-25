@@ -26,13 +26,13 @@ data class CoverPhotosState(val presentations: List<Presentation>) : State
 
 data class Speaker(
     val name: String,
-    val photoUrl: String,
+    val photoUrl: String
 )
 
 sealed class Presentation {
     data class WithKnownSpeaker(
         val speaker: Speaker,
-        val topic: String,
+        val topic: String
     ) : Presentation()
 
     object FreeSlot : Presentation()
@@ -45,11 +45,11 @@ val CoverPhotos = FC<Props>("CoverPhotos") {
                 Presentation.WithKnownSpeaker(
                     speaker = Speaker(
                         name = "Michał Koszałka",
-                        photoUrl = "Michal.png",
+                        photoUrl = "Michal.png"
                     ),
-                    topic = "Kotlin syntax in domain-driven code",
-                ),
-            ),
+                    topic = "Kotlin syntax in domain-driven code"
+                )
+            )
         )
     )
 
@@ -73,6 +73,7 @@ fun ChildrenBuilder.meetupPhoto(state: CoverPhotosState) {
             position = Position.relative
             backgroundImage = "url('Kotlin_UG_pattern.png')".unsafeCast<BackgroundImage>()
             backgroundPosition = BackgroundPosition.center
+            backgroundSize = cover
             color = NamedColor.white
             fontFamily = FontFamily.sansSerif
         }
